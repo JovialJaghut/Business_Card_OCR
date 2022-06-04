@@ -62,4 +62,25 @@ william.zona@gmail.com
   console.log(results);
 })();
 
+var getResult = (text) => {
+  var bcParser = new BusinessCardParser(text);
+  var result = bcParser.getContactInfo({asHtml: true});
+  return result;
+};
+
+document.querySelector("#submitButton").addEventListener("click", (evt) => {
+  console.log(evt);
+  let text = document.querySelector("#testText").value;
+  console.log(text);
+  if (!text) return;
+  var result = getResult(text);
+  document.querySelector("#outputDiv").innerHTML = result;
+});
+
+document.querySelector("#clearButton").addEventListener("click", (evt) => {
+  console.log(evt);
+  document.querySelector("#outputDiv").textContent = "";
+  document.querySelector("#testText").value = "";
+});
+
 

@@ -31,6 +31,11 @@ export default class ContactInfo {
     if (!lines || lines.length < 1) return `${capitalizedType}: ${notFoundTypeMap[type].message}`;
 
     if (lines.length === 1) {
+      if (type==="phone"){
+        lines = lines.filter(result => !result.toLowerCase().includes("fax"))
+                .map(result => result.replace(/[\-\(\)\+\s]/gmi, ""));
+        if (!lines[0]) return `${capitalizedType}: ${notFoundTypeMap[type].message}`; 
+      }
       var result = `${capitalizedType}: ${lines[0].match(pattern)}`;
       return result;
     }
@@ -40,7 +45,9 @@ export default class ContactInfo {
         console.log(allResults);
         allResults = allResults.flat()
                       .filter(result => !result.toLowerCase().includes("fax"))
-                      .map((result => result.match(pattern)));
+                      .map(result => result.replace(/[\-\(\)\+\s]/gmi, ""))
+                      .map(result => result.match(pattern));
+        console.log(allResults);
       }
       return `${capitalizedType}: ${allResults.join(" and ")}`;
     }

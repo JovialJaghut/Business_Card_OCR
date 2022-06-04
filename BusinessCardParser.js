@@ -12,6 +12,7 @@ class BusinessCardParser {
     let name = contactInfo.getName();
     let email = contactInfo.getEmailAddress();
     let phone = contactInfo.getPhoneNumber();
+    console.log(phone);
     return `${[name, email, phone].filter(x => x).join(joiner)}`;
   }
 
