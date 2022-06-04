@@ -1,0 +1,16 @@
+{
+  "name": "businesscardparser",
+  "version": "1.0.0",
+  "description": "parse name, email, and phone from ocr text",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node liveServer.js"
+  },
+  "author": "William Zona",
+  "license": "ISC",
+  "dependencies": {
+    "compromise": "^14.1.2",
+    "live-server": "^1.2.2"
+  }
+}
