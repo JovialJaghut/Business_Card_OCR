@@ -50,6 +50,8 @@ william.zona@gmail.com
 
 ];
 
+/*
+was using this to test some texts: 
 (async () => {
   var getResult = (test) => {
     var bcParser = new BusinessCardParser(test);
@@ -60,23 +62,23 @@ william.zona@gmail.com
   let promises = tests.map(getResult);
   let results = await Promise.all(promises);
   console.log(results);
-})();
+})(); */
 
-var getResult = (text) => {
-  var bcParser = new BusinessCardParser(text);
-  var result = bcParser.getContactInfo({asHtml: true});
+const getResult = (text) => {
+  let bcParser = new BusinessCardParser(text);
+  let result = bcParser.getContactInfo({asHtml: true});
   return result;
 };
 
+//hitting the submit button runs the program:
 document.querySelector("#submitButton").addEventListener("click", (evt) => {
-  console.log(evt);
   let text = document.querySelector("#testText").value;
-  console.log(text);
   if (!text) return;
   var result = getResult(text);
   document.querySelector("#outputDiv").innerHTML = result;
 });
 
+//hitting the clear button clears the input and the output:
 document.querySelector("#clearButton").addEventListener("click", (evt) => {
   console.log(evt);
   document.querySelector("#outputDiv").textContent = "";
